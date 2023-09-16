@@ -1,0 +1,39 @@
+<div class="specialty-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="specialty-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="userRoleApp?.deactivateUserRoleApp">
+        <h4>Activar usuario y rol</h4>
+      </div>
+      <div *ngIf="userRoleApp?.activateUserRoleApp">
+        <h4>Inactivar usuario y rol</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12">
+              <div *ngIf="userRoleApp?.deactivateUserRoleApp">
+                <p>¿Desea activar el usuario y rol?</p>
+              </div>
+              <div *ngIf="userRoleApp?.activateUserRoleApp">
+                <p>¿Desea inactivar el usuario y rol?</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div>
+              <button type="button" class="btn button-color" (click)="activateDeactivateUserRoleApp()">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

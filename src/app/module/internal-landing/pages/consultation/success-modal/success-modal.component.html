@@ -1,0 +1,24 @@
+<div class="specialty-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <h4 class="modal-title">Predicción exitosa</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12">
+              <p *ngIf="prediction.message">{{prediction.message}}</p>
+              <p *ngIf="prediction.mensaje">{{prediction.mensaje}}</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div>
+              <button type="button" class="btn button-color" (click)="closeModal()">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

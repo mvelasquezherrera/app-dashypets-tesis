@@ -1,0 +1,61 @@
+<div class="customer-container" *ngIf="loading">
+    <div class="overlay">
+        <app-spinner></app-spinner>
+    </div>
+</div>
+<div class="customer-container" style="margin-bottom: 60px;">
+    <div class="container-center">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 style="color: #A18FD3">Listado de roles y permisos</h2>
+                </div>
+                <div class="col-md-3 text-right">
+                    <button class="btn button-color" (click)="openModal(null, true, false, false)">Registrar
+                        rol y permiso</button>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 table-responsive">
+                    <table class="table table-bordered table-striped custom-table">
+                        <thead>
+                            <tr>
+                                <th>Id Rol</th>
+                                <th>Rol</th>
+                                <th>Id Permiso</th>
+                                <th>Permiso</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let roleAppPermission of listRoleAppPermission; let i = index">
+                                <td>{{roleAppPermission.idRolApp}}</td>
+                                <td>{{roleAppPermission.descripcionRolApp}}</td>
+                                <td>{{roleAppPermission.idPermisoApp}}</td>
+                                <td>{{roleAppPermission.descripcionPermisoApp}}</td>
+                                <td>{{roleAppPermission.estadoRolPermisoApp === 'A' ? 'ACTIVO' : (roleAppPermission.estadoRolPermisoApp === 'I' ?
+                                    'INACTIVO' : '-')}}</td>
+                                <td class="d-flex justify-content-center">
+                                    <span class="mx-2">
+                                        <i style="color: #8C30F5" class="bi bi-eye"
+                                            (click)="openModal(roleAppPermission, false, true, false)"></i>
+                                    </span>
+                                    <span class="mx-2">
+                                        <i style="color: #8C30F5" class="bi bi-pencil"
+                                            (click)="openModal(roleAppPermission, false, false, true)"></i>
+                                    </span>
+                                    <span class="mx-2">
+                                        <i *ngIf="roleAppPermission.estadoRolPermisoApp == 'A'" style="color: #8C30F5"
+                                            class="bi bi-trash" (click)="activateDeactivateModal(roleAppPermission)"></i>
+                                        <i *ngIf="roleAppPermission.estadoRolPermisoApp == 'I'" style="color: #8C30F5"
+                                            class="bi bi-check-circle" (click)="activateDeactivateModal(roleAppPermission)"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

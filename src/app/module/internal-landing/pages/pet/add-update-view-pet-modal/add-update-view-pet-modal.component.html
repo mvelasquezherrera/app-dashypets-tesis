@@ -1,0 +1,85 @@
+<div class="modal-content" style="width: 120%;">
+  <div class="modal-header">
+    <div *ngIf="!pet">
+      <h4 class="modal-title">Agregar Mascota</h4>
+    </div>
+    <div *ngIf="pet">
+      <h4 class="modal-title" *ngIf="pet.viewPet">Ver Mascota</h4>
+      <h4 class="modal-title" *ngIf="pet.editPet">Editar Mascota</h4>
+    </div>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form [formGroup]="petForm">
+        <div class="row">
+          <div class="col-md-4">
+            <label>Cliente:</label>
+            <select *ngIf="!pet?.viewPet" class="form-control custom-select" formControlName="idCliente">
+              <option *ngFor="let customer of listCustomer" [value]="customer.idCliente">{{ customer.nombreCliente }}</option>
+            </select>
+            <input *ngIf="pet?.viewPet" type="text" class="form-control" placeholder="Género" value={{pet?.nombreCliente}} [readonly]="pet?.viewPet">
+          </div>
+          <div class="col-md-4">
+            <label>Raza de perro:</label>
+            <select *ngIf="!pet?.viewPet" class="form-control custom-select" formControlName="idTipoMascota">
+              <option *ngFor="let petType of listPetType" [value]="petType.idTipoMascota">{{ petType.descripcionTipoMascota }}</option>
+            </select>
+            <input *ngIf="pet?.viewPet" type="text" class="form-control" placeholder="Género" value={{pet?.descripcionTipoMascota}} [readonly]="pet?.viewPet">
+          </div>
+          <div class="col-md-4">
+            <label>Tamaño de perro:</label>
+            <select *ngIf="!pet?.viewPet" class="form-control custom-select" formControlName="idClaseMascota">
+              <option *ngFor="let petClass of listPetClass" [value]="petClass.idClaseMascota">{{ petClass.descripcionClaseMascota }}</option>
+            </select>
+            <input *ngIf="pet?.viewPet" type="text" class="form-control" placeholder="Género" value={{pet?.descripcionClaseMascota}} [readonly]="pet?.viewPet">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Sexo:</label>
+            <select *ngIf="!pet?.viewPet" class="form-control custom-select" formControlName="sexo">
+              <option value="M">Macho</option>
+              <option value="H">Hembra</option>
+            </select>
+            <input *ngIf="pet?.viewPet" type="text" class="form-control" placeholder="Género" formControlName="sexo" [readonly]="pet?.viewPet">
+          </div>
+          <div class="col-md-4">
+            <label>Nombre:</label>
+            <input type="text" class="form-control" placeholder="Nombre de mascota" formControlName="nombreMascota" [readonly]="pet?.viewPet">
+          </div>
+          <div class="col-md-4">
+            <label>Color:</label>
+            <input type="text" class="form-control" placeholder="Color" formControlName="color" [readonly]="pet?.viewPet">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Fecha de Nacimiento:</label>
+            <input type="date" class="form-control" formControlName="fechaNacimiento" [readonly]="pet?.viewPet">
+          </div>
+          <div class="col-md-4">
+            <label>Observaciones:</label>
+            <input type="text" class="form-control" placeholder="Observaciones" formControlName="observaciones" [readonly]="pet?.viewPet">
+          </div>
+          <div class="col-md-4">
+            <label>Tratamiento:</label>
+            <input type="text" class="form-control" placeholder="Tratamiento" formControlName="tratamiento" [readonly]="pet?.viewPet">
+          </div>
+        </div>
+        <br>
+        <div class="modal-footer">
+          <div *ngIf="!pet">
+            <button type="button" class="btn button-color" [disabled]="!petForm.valid" (click)="regiterPet()">Registrar</button>
+          </div>
+          <div *ngIf="pet">
+            <button *ngIf="pet.editPet" type="button" class="btn button-color" [disabled]="!petForm.valid" (click)="updatePet()">Actualizar</button>
+            <button *ngIf="pet.viewPet" type="button" class="btn button-color" (click)="closeModal()">Cerrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

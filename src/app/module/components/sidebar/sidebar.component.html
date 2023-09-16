@@ -1,0 +1,18 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white background-color" style="width: 100%; min-height: 100vh; height: 100%; margin-bottom: 50px;">
+  <a class="d-flex align-items-center text-white text-decoration-none">
+    <span class="fs-5">{{fullName}}</span>
+  </a>
+  <a class="d-flex align-items-center text-white text-decoration-none">
+    <span class="fs-7">{{role}}</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item" *ngFor="let option of menuOptions">
+      <a class="nav-link" [routerLink] = "['/internal/' + option.routeInApp]"
+        [ngClass]="{'active': isActive(option.routeInApp), 'inactive': !isActive(option.routeInApp)}"
+        (click)="setActive(option.routeInApp)">
+        <span>{{ option.descripcionPermisoApp }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

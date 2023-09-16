@@ -1,0 +1,17 @@
+.background-color {
+  background-color: #A18FD3;
+}
+
+.nav-link.active {
+  background-color: #FFFFFF;
+  color: #8C30F5;
+}
+
+.active {
+  color: #8C30F5;
+  background-color: #FFFFFF;
+}
+
+.inactive {
+  color: white;
+}

@@ -1,0 +1,51 @@
+<div class="roleAppPermission-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!roleAppPermission">
+        <h4 class="modal-title">Agregar Rol</h4>
+      </div>
+      <div *ngIf="roleAppPermission">
+        <h4 class="modal-title" *ngIf="roleAppPermission.viewRoleAppPermission">Ver Rol</h4>
+        <h4 class="modal-title" *ngIf="roleAppPermission.editRoleAppPermission">Editar Rol</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="roleAppPermissionForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción del Rol:</label>
+              <select *ngIf="!roleAppPermission?.viewRoleAppPermission" class="form-control custom-select" formControlName="idRolApp">
+                <option *ngFor="let appRole of listAppRole" [value]="appRole.idRolApp">{{ appRole.descripcionRolApp }}</option>
+              </select>
+              <input *ngIf="roleAppPermission?.viewRoleAppPermission" type="text" class="form-control" placeholder="Género" value={{roleAppPermission?.descripcionRolApp}} [readonly]="roleAppPermission?.viewRoleAppPermission">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción del Permiso:</label>
+              <select *ngIf="!roleAppPermission?.viewRoleAppPermission" class="form-control custom-select" formControlName="idPermisoApp">
+                <option *ngFor="let appPermission of listAppPermission" [value]="appPermission.idPermisoApp">{{ appPermission.descripcionPermisoApp }}</option>
+              </select>
+              <input *ngIf="roleAppPermission?.viewRoleAppPermission" type="text" class="form-control" placeholder="Género" value={{roleAppPermission?.descripcionPermisoApp}} [readonly]="roleAppPermission?.viewRoleAppPermission">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!roleAppPermission">
+              <button type="button" class="btn button-color" [disabled]="!roleAppPermissionForm.valid"
+                (click)="submitRoleAppPermission()">Registrar</button>
+            </div>
+            <div *ngIf="roleAppPermission">
+              <button *ngIf="roleAppPermission.editRoleAppPermission" type="button" class="btn button-color" [disabled]="!roleAppPermissionForm.valid"
+                (click)="updateRoleAppPermission()">Actualizar</button>
+              <button *ngIf="roleAppPermission.viewRoleAppPermission" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

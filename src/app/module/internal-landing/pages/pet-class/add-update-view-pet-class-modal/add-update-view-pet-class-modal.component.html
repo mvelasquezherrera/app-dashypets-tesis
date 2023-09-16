@@ -1,0 +1,44 @@
+<div class="petClass-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="petClass-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!petClass">
+        <h4 class="modal-title">Agregar tamaño de perro</h4>
+      </div>
+      <div *ngIf="petClass">
+        <h4 class="modal-title" *ngIf="petClass.viewPetClass">Ver tamaño de perro</h4>
+        <h4 class="modal-title" *ngIf="petClass.editPetClass">Editar tamaño de perro</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="petClassForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción tamaño de perro:</label>
+              <input type="text" class="form-control" placeholder="Ingresa tamaño de perro"
+                formControlName="descripcionClaseMascota" [readonly]="petClass?.viewPetClass">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!petClass">
+              <button type="button" class="btn button-color" [disabled]="!petClassForm.valid"
+                (click)="submitPetClass()">Registrar</button>
+            </div>
+            <div *ngIf="petClass">
+              <button *ngIf="petClass.editPetClass" type="button" class="btn button-color" [disabled]="!petClassForm.valid"
+                (click)="updatePetClass()">Actualizar</button>
+              <button *ngIf="petClass.viewPetClass" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

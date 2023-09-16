@@ -1,0 +1,56 @@
+<div class="customer-container" *ngIf="loading">
+    <div class="overlay">
+        <app-spinner></app-spinner>
+    </div>
+</div>
+<div class="customer-container" style="margin-bottom: 60px;">
+    <div class="container-center">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 style="color: #A18FD3">Listado de clientes</h2>
+                </div>
+                <div class="col-md-3 text-right">
+                    <button class="btn button-color" (click)="addViewEditCustomerModal(null , true ,false, false)">Registrar cliente</button>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 table-responsive">
+                    <table class="table table-bordered table-striped custom-table">
+                        <thead>
+                            <tr>
+                                <th>DNI</th>
+                                <th>Nombres y Apellidos</th>
+                                <th>Celular</th>
+                                <th>Correo Electrónico</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let customer of listCustomer; let i = index">
+                                <td>{{customer.dni}}</td>
+                                <td>{{customer.nombreCliente}}</td>
+                                <td>{{customer.celular}}</td>
+                                <td>{{customer.correo}}</td>
+                                <td>{{customer.estadoCliente === 'A' ? 'ACTIVO' : (customer.estadoCliente === 'I' ? 'INACTIVO' : '-')}}</td>
+                                <td class="d-flex justify-content-center">
+                                    <span class="mx-2">
+                                        <i style="color: #8C30F5" class="bi bi-eye" (click)="addViewEditCustomerModal(customer, false, true, false)"></i>
+                                    </span>
+                                    <span class="mx-2">
+                                        <i style="color: #8C30F5" class="bi bi-pencil" (click)="addViewEditCustomerModal(customer, false, false, true)"></i>
+                                    </span>
+                                    <span class="mx-2">
+                                        <i *ngIf="customer.estadoCliente == 'A'" style="color: #8C30F5" class="bi bi-trash" (click)="activateDeactivateModa(customer)"></i>
+                                        <i *ngIf="customer.estadoCliente == 'I'" style="color: #8C30F5" class="bi bi-check-circle" (click)="activateDeactivateModa(customer)"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

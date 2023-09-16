@@ -1,0 +1,44 @@
+<div class="specialty-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="specialty-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!specialty">
+        <h4 class="modal-title">Agregar Especialidad</h4>
+      </div>
+      <div *ngIf="specialty">
+        <h4 class="modal-title" *ngIf="specialty.viewSpecialty">Ver Especialidad</h4>
+        <h4 class="modal-title" *ngIf="specialty.editSpecialty">Editar Especialidad</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="specialtyForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción Especialidad:</label>
+              <input type="text" class="form-control" placeholder="Ingresa especialidad"
+                formControlName="descripcionEspecialidad" [readonly]="specialty?.viewSpecialty">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!specialty">
+              <button type="button" class="btn button-color" [disabled]="!specialtyForm.valid"
+                (click)="submitSpecialty()">Registrar</button>
+            </div>
+            <div *ngIf="specialty">
+              <button *ngIf="specialty.editSpecialty" type="button" class="btn button-color" [disabled]="!specialtyForm.valid"
+                (click)="updateSpecialty()">Actualizar</button>
+              <button *ngIf="specialty.viewSpecialty" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

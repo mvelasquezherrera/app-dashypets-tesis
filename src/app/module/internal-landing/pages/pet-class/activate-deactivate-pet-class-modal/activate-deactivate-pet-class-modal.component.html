@@ -1,0 +1,39 @@
+<div class="specialty-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="specialty-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="petClass?.estadoClaseMascota == 'I'">
+        <h4>Activar clase mascota</h4>
+      </div>
+      <div  *ngIf="petClass?.estadoClaseMascota == 'A'">
+        <h4>Inactivar clase mascota</h4>
+      </div>
+      <button class="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="petClass?.estadoClaseMascota == 'I'">
+              <p>¿Desea activar el clase mascota?</p>
+            </div>
+            <div *ngIf="petClass?.estadoClaseMascota == 'A'">
+              <p>¿Desea inactivar el clase mascota?</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div >
+            <button class="button" class="btn button-color" (click)="activateDeactivatePetClass()">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,58 @@
+<div class="vet-container" *ngIf="loading">
+  <div class="overlay">
+      <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="vet-container" style="margin-bottom: 60px;">
+  <div class="container-center">
+      <div class="container mt-4">
+          <div class="row">
+              <div class="col-md-9">
+                  <h2 style="color: #A18FD3">Listado de veterinarios</h2>
+              </div>
+              <div class="col-md-3 text-right">
+                  <button class="btn button-color" (click)="addViewEditVetModal(null , true ,false, false)">Registrar veterinario</button>
+              </div>
+          </div>
+          <div class="row mt-4">
+              <div class="col-md-12 table-responsive">
+                  <table class="table table-bordered table-striped custom-table">
+                      <thead>
+                          <tr>
+                              <th>DNI</th>
+                              <th>Nombres y Apellidos</th>
+                              <th>Especialidad</th>
+                              <th>Celular</th>
+                              <th>Correo Electrónico</th>
+                              <th>Estado</th>
+                              <th>Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let vet of listVet; let i = index">
+                              <td>{{vet.dni}}</td>
+                              <td>{{vet.nombreVeterinario}}</td>
+                              <td>{{vet.descripcionEspecialidad}}</td>
+                              <td>{{vet.celular}}</td>
+                              <td>{{vet.correo}}</td>
+                              <td>{{vet.estadoVeterinario === 'A' ? 'ACTIVO' : (vet.estadoVeterinario === 'I' ? 'INACTIVO' : '-')}}</td>
+                              <td class="d-flex justify-content-center">
+                                  <span class="mx-2">
+                                      <i style="color: #8C30F5" class="bi bi-eye" (click)="addViewEditVetModal(vet, false, true, false)"></i>
+                                  </span>
+                                  <span class="mx-2">
+                                      <i style="color: #8C30F5" class="bi bi-pencil" (click)="addViewEditVetModal(vet, false, false, true)"></i>
+                                  </span>
+                                  <span class="mx-2">
+                                      <i *ngIf="vet.estadoVeterinario == 'A'" style="color: #8C30F5" class="bi bi-trash" (click)="activateDeactivateModal(vet)"></i>
+                                      <i *ngIf="vet.estadoVeterinario == 'I'" style="color: #8C30F5" class="bi bi-check-circle" (click)="activateDeactivateModal(vet)"></i>
+                                  </span>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

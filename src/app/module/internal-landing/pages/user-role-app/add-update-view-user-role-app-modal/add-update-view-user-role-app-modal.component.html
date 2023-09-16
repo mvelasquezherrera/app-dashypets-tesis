@@ -1,0 +1,56 @@
+<div class="userRoleApp-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!userRoleApp">
+        <h4 class="modal-title">Agregar usuario y rol</h4>
+      </div>
+      <div *ngIf="userRoleApp">
+        <h4 class="modal-title" *ngIf="userRoleApp.viewUserRoleApp">Ver usuario y rol</h4>
+        <h4 class="modal-title" *ngIf="userRoleApp.editUserRoleApp">Editar usuario y rol</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="userRoleAppForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción del Permiso:</label>
+              <select *ngIf="!userRoleApp?.viewUserRoleApp" class="form-control custom-select"
+                formControlName="usuario">
+                <option *ngFor="let user of listUser" [value]="user.usuario">{{ user.usuario }}</option>
+              </select>
+              <input *ngIf="userRoleApp?.viewUserRoleApp" type="text" class="form-control" placeholder="Género"
+                value={{userRoleApp?.usuario}} [readonly]="userRoleApp?.viewUserRoleApp">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción del Rol:</label>
+              <select *ngIf="!userRoleApp?.viewUserRoleApp" class="form-control custom-select"
+                formControlName="idRolApp">
+                <option *ngFor="let appRole of listAppRole" [value]="appRole.idRolApp">{{ appRole.descripcionRolApp }}
+                </option>
+              </select>
+              <input *ngIf="userRoleApp?.viewUserRoleApp" type="text" class="form-control" placeholder="Género"
+                value={{userRoleApp?.descripcionRolApp}} [readonly]="userRoleApp?.viewUserRoleApp">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!userRoleApp">
+              <button type="button" class="btn button-color" [disabled]="!userRoleAppForm.valid"
+                (click)="submitUserRoleApp()">Registrar</button>
+            </div>
+            <div *ngIf="userRoleApp">
+              <button *ngIf="userRoleApp.editUserRoleApp" type="button" class="btn button-color"
+                [disabled]="!userRoleAppForm.valid" (click)="updateUserRoleApp()">Actualizar</button>
+              <button *ngIf="userRoleApp.viewUserRoleApp" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="customer-container" *ngIf="loading">
+    <div class="overlay">
+        <app-spinner></app-spinner>
+    </div>
+</div>
+<div class="customer-container" style="margin-bottom: 60px;">
+    <div class="container-center">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 style="color: #A18FD3">Listado de enfermedades</h2>
+                </div>
+                <div class="col-md-3 text-right">
+                    <button class="btn button-color" (click)="openModal(null , true ,false, false)">Registrar enfermedad</button>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12 table-responsive">
+                    <table class="table table-bordered table-striped custom-table">
+                        <thead>
+                            <tr>
+                                <th>Id Enfermedad</th>
+                                <th>Enfermedad</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let disease of listDisease; let i = index">
+                                <td>{{disease.idEnfermedad}}</td>
+                                <td>{{disease.descripcionEnfermedad}}</td>
+                                <td>{{disease.estadoEnfermedad === 'A' ? 'ACTIVO' : (disease.estadoEnfermedad === 'I' ? 'INACTIVO' : '-')}}</td>
+                                <td class="d-flex justify-content-center">
+                                    <span class="mx-2">
+                                        <i style="color: #8C30F5" class="bi bi-eye" (click)="openModal(disease, false, true, false)"></i>
+                                    </span>
+                                    <span class="mx-2">
+                                        <i style="color: #8C30F5" class="bi bi-pencil" (click)="openModal(disease, false, false, true)"></i>
+                                    </span>
+                                    <span class="mx-2">
+                                      <i *ngIf="disease.estadoEnfermedad == 'A'" style="color: #8C30F5" class="bi bi-trash" (click)="activateDeactivateModal(disease)"></i>
+                                      <i *ngIf="disease.estadoEnfermedad == 'I'" style="color: #8C30F5" class="bi bi-check-circle" (click)="activateDeactivateModal(disease)"></i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

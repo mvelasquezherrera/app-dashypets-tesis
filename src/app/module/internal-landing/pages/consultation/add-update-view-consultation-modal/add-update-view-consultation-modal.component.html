@@ -1,0 +1,131 @@
+<div class="consultation-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="modal-content" style="width: 120%;">
+  <div class="modal-header">
+    <div *ngIf="!consultation">
+      <h4 class="modal-title">Agregar Consulta</h4>
+    </div>
+    <div *ngIf="consultation">
+      <h4 class="modal-title" *ngIf="consultation.viewConsultation">Ver Consulta</h4>
+      <h4 class="modal-title" *ngIf="consultation.editConsultation">Editar Consulta</h4>
+    </div>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form [formGroup]="consultationForm">
+        <div class="row">
+          <div class="col-md-4">
+            <label>Veterinario:</label>
+            <select *ngIf="!consultation?.viewConsultation" class="form-control custom-select" formControlName="idVeterinario">
+              <option *ngFor="let vet of listVet" [value]="vet.idVeterinario">{{ vet.nombreVeterinario }}</option>
+            </select>
+            <input *ngIf="consultation?.viewConsultation" type="text" class="form-control" placeholder="Género" value={{consultation?.nombreCompletoVeterinario}} [readonly]="consultation?.viewConsultation">
+          </div>
+          <div class="col-md-4">
+            <label>Mascota:</label>
+            <select *ngIf="!consultation?.viewConsultation" class="form-control custom-select" formControlName="idMascota">
+              <option *ngFor="let pet of listPet" [value]="pet.idMascota">{{ pet.nombreMascota }}</option>
+            </select>
+            <input *ngIf="consultation?.viewConsultation" type="text" class="form-control" placeholder="Género" value={{consultation?.nombreMascota}} [readonly]="consultation?.viewConsultation">
+          </div>
+          <div class="col-md-4">
+            <label>Enfermedad:</label>
+            <select *ngIf="!consultation?.viewConsultation" class="form-control custom-select" formControlName="idEnfermedad">
+              <option *ngFor="let disease of listDisease" [value]="disease.idEnfermedad">{{ disease.descripcionEnfermedad }}</option>
+            </select>
+            <input *ngIf="consultation?.viewConsultation" type="text" class="form-control" placeholder="Género" value={{consultation?.descripcionEnfermedad}} [readonly]="consultation?.viewConsultation">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Fecha consulta:</label>
+            <input type="date" class="form-control" formControlName="fechaConsulta" [readonly]="consultation?.viewConsultation">
+          </div>
+          <div class="col-md-4">
+            <label>Próxima consulta:</label>
+            <input type="date" class="form-control" formControlName="fechaProximaConsulta" [readonly]="consultation?.viewConsultation">
+          </div>
+          <div class="col-md-4">
+            <label>Edad en meses:</label>
+            <input type="number" class="form-control" placeholder="Edad en meses" min="1" formControlName="edadMeses" [readonly]="consultation?.viewConsultation">
+          </div>
+        </div>
+        <br>
+        <div *ngIf="consultation?.viewConsultation">
+          <div class="row">
+            <div class="col-md-6">
+              <label>Especialidad:</label>
+              <input type="text" class="form-control" placeholder="Especialidad" value={{consultation?.especialidadVeterinario}} [readonly]="consultation?.viewConsultation">
+            </div>
+            <div class="col-md-6">
+              <label>Nombre del cliente:</label>
+              <input type="text" class="form-control" placeholder="Cliente" value={{consultation?.nombreCompletoCliente}} [readonly]="consultation?.viewConsultation">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Raza de perro:</label>
+              <input type="text" class="form-control" placeholder="Raza de perro" value={{consultation?.descripcionTipoMascota}} [readonly]="consultation?.viewConsultation">
+            </div>
+            <div class="col-md-6">
+              <label>Tamaño de perro:</label>
+              <input type="text" class="form-control" placeholder="Tamaño de perro" value={{consultation?.descripcionClaseMascota}} [readonly]="consultation?.viewConsultation">
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Tratamiento:</label>
+            <input type="text" class="form-control" placeholder="Tratamiento" formControlName="tratamiento" [readonly]="consultation?.viewConsultation">
+          </div>
+
+          <div class="col-md-6">
+            <label>Diagnostico:</label>
+            <input type="text" class="form-control" placeholder="Diagnostico" formControlName="diagnostico" [readonly]="consultation?.viewConsultation">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Observaciones:</label>
+            <input type="text" class="form-control" placeholder="Observaciones" formControlName="observaciones" [readonly]="consultation?.viewConsultation">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-12">
+            <div *ngIf="!consultation?.viewConsultation">
+              <label>Síntomas:</label>
+              <div *ngFor="let item of listSymptom">
+                <label>
+                  <input type="checkbox" [checked]="item.tieneSintoma" (change)="onCheckboxChange(item)">
+                   {{ item.descripcionSintoma }}
+                </label>
+              </div>
+            </div>
+            <div *ngIf="consultation?.viewConsultation" >
+              <label>Síntomas:</label>
+              <input type="text" class="form-control" placeholder="Síntomas" value={{consultation?.sintomasConcatenado}} [readonly]="consultation?.viewConsultation">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div *ngIf="!consultation">
+            <button type="button" class="btn button-color" [disabled]="!consultationForm.valid" (click)="regiterConsultation()">Registrar</button>
+          </div>
+          <div *ngIf="consultation">
+            <button *ngIf="consultation.editConsultation" type="button" class="btn button-color" [disabled]="!consultationForm.valid" (click)="updateConsultation()">Actualizar</button>
+            <button *ngIf="consultation.viewConsultation" type="button" class="btn button-color" (click)="closeModal()">Cerrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

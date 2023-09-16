@@ -1,0 +1,44 @@
+<div class="petType-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="petType-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!petType">
+        <h4 class="modal-title">Agregar raza de perro</h4>
+      </div>
+      <div *ngIf="petType">
+        <h4 class="modal-title" *ngIf="petType.viewPetType">Ver raza de perro</h4>
+        <h4 class="modal-title" *ngIf="petType.editPetType">Editar raza de perro</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="petTypeForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción raza de perro:</label>
+              <input type="text" class="form-control" placeholder="Ingresa nombre de la raza"
+                formControlName="descripcionTipoMascota" [readonly]="petType?.viewPetType">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!petType">
+              <button type="button" class="btn button-color" [disabled]="!petTypeForm.valid"
+                (click)="submitPetType()">Registrar</button>
+            </div>
+            <div *ngIf="petType">
+              <button *ngIf="petType.editPetType" type="button" class="btn button-color" [disabled]="!petTypeForm.valid"
+                (click)="updatePetType()">Actualizar</button>
+              <button *ngIf="petType.viewPetType" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

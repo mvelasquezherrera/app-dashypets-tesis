@@ -1,0 +1,38 @@
+.modal-content {
+  background-color: #EDDFFD;
+}
+
+.btn[disabled] {
+  background-color: #878787;
+  border-color: #878787;
+  color: #fff;
+}
+
+.button-color {
+  background-color: #8C30F5;
+  color: #ffffff;
+}
+
+.modal-body input.form-control {
+  border: 1.5px solid #8C30F5;
+  border-radius: 40px;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-footer .btn {
+  border-radius: 40px;
+  margin: 0 5px;
+}
+
+.modal-footer .btn[disabled] {
+  opacity: 0.5;
+}
+
+.custom-select {
+  border: 1.5px solid #8C30F5;
+  border-radius: 40px;
+}

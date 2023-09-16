@@ -1,0 +1,44 @@
+<div class="symptom-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="symptom-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!symptom">
+        <h4 class="modal-title">Agregar Síntoma</h4>
+      </div>
+      <div *ngIf="symptom">
+        <h4 class="modal-title" *ngIf="symptom.viewSymptom">Ver Síntoma</h4>
+        <h4 class="modal-title" *ngIf="symptom.editSymptom">Editar Síntoma</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="symptomForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción Síntoma:</label>
+              <input type="text" class="form-control" placeholder="Ingresa síntoma"
+                formControlName="descripcionSintoma" [readonly]="symptom?.viewSymptom">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!symptom">
+              <button type="button" class="btn button-color" [disabled]="!symptomForm.valid"
+                (click)="submitSymptom()">Registrar</button>
+            </div>
+            <div *ngIf="symptom">
+              <button *ngIf="symptom.editSymptom" type="button" class="btn button-color" [disabled]="!symptomForm.valid"
+                (click)="updateSymptom()">Actualizar</button>
+              <button *ngIf="symptom.viewSymptom" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

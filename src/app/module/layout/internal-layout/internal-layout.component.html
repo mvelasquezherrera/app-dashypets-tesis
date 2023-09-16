@@ -1,0 +1,10 @@
+<app-navbar-session (toggleSideBarForMe)="sideBarToggler()"></app-navbar-session>
+<div class="row without-scroll">
+  <div class="col-lg-2" *ngIf="isSidebarOpened">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div [ngClass]="{'col-lg-10': isSidebarOpened, 'col-lg-12': !isSidebarOpened}">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<app-footer></app-footer>

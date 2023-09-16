@@ -1,0 +1,96 @@
+<div class="modal-content" style="width: 120%;">
+  <div class="modal-header">
+    <div *ngIf="!vet">
+      <h4 class="modal-title">Agregar Veterinario</h4>
+    </div>
+    <div *ngIf="vet">
+      <h4 class="modal-title" *ngIf="vet.viewVet">Ver Veterinario</h4>
+      <h4 class="modal-title" *ngIf="vet.editVet">Editar Veterinario</h4>
+    </div>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form [formGroup]="vetForm">
+        <div class="row">
+          <div class="col-md-4">
+            <label>DNI:</label>
+            <input type="text" class="form-control" placeholder="DNI" formControlName="dni" required [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Primer Nombre:</label>
+            <input type="text" class="form-control" placeholder="Primer Nombre" formControlName="nombre1" required [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Segundo Nombre:</label>
+            <input type="text" class="form-control" placeholder="Segundo Nombre" formControlName="nombre2" [readonly]="vet?.viewVet">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Apellido Paterno:</label>
+            <input type="text" class="form-control" placeholder="Apellido Paterno" formControlName="apellidoPaterno" required [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Apellido Materno:</label>
+            <input type="text" class="form-control" placeholder="Apellido Materno" formControlName="apellidoMaterno" [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Celular:</label>
+            <input type="text" class="form-control" placeholder="Celular" formControlName="celular" [readonly]="vet?.viewVet">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Fecha de Nacimiento:</label>
+            <input type="date" class="form-control" formControlName="fechaNacimiento" [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Correo Electrónico:</label>
+            <input type="email" class="form-control" placeholder="Correo Electrónico" formControlName="correo" [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Sexo:</label>
+            <select *ngIf="!vet?.viewVet" class="form-control custom-select" formControlName="sexo">
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+            <input *ngIf="vet?.viewVet" type="text" class="form-control" placeholder="Género" formControlName="sexo" [readonly]="vet?.viewVet">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Dirección:</label>
+            <input type="text" class="form-control" placeholder="Dirección" formControlName="direccion" [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Usuario:</label>
+            <select *ngIf="!vet?.viewVet" class="form-control custom-select" formControlName="usuario">
+              <option *ngFor="let user of listUser" [value]="user.usuario">{{ user.usuario }}</option>
+            </select>
+            <input *ngIf="vet?.viewVet" type="text" class="form-control" placeholder="Género" value={{vet?.usuario}} [readonly]="vet?.viewVet">
+          </div>
+          <div class="col-md-4">
+            <label>Especialidad:</label>
+            <select *ngIf="!vet?.viewVet" class="form-control custom-select" formControlName="idEspecialidad">
+              <option *ngFor="let specialty of listSpecialty" [value]="specialty.idEspecialidad">{{ specialty.descripcionEspecialidad }}</option>
+            </select>
+            <input *ngIf="vet?.viewVet" type="text" class="form-control" placeholder="Género" value={{vet?.descripcionEspecialidad}} [readonly]="vet?.viewVet">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div *ngIf="!vet">
+            <button type="button" class="btn button-color" [disabled]="!vetForm.valid" (click)="regiterVet()">Registrar</button>
+          </div>
+          <div *ngIf="vet">
+            <button *ngIf="vet.editVet" type="button" class="btn button-color" [disabled]="!vetForm.valid" (click)="updateVet()">Actualizar</button>
+            <button *ngIf="vet.viewVet" type="button" class="btn button-color" (click)="closeModal()">Cerrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

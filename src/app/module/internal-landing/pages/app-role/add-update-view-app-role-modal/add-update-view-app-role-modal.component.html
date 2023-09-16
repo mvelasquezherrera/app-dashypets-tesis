@@ -1,0 +1,51 @@
+<div class="appRole-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="appRole-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!appRole">
+        <h4 class="modal-title">Agregar Rol</h4>
+      </div>
+      <div *ngIf="appRole">
+        <h4 class="modal-title" *ngIf="appRole.viewAppRole">Ver Rol</h4>
+        <h4 class="modal-title" *ngIf="appRole.editAppRole">Editar Rol</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="appRoleForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción del Rol:</label>
+              <input type="text" class="form-control" placeholder="Ingresa el rol"
+                formControlName="descripcionRolApp" [readonly]="appRole?.viewAppRole">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Abreviación del Rol:</label>
+              <input type="text" class="form-control" placeholder="Ingresa la abreviación del rol"
+                formControlName="abreviacionRolApp" [readonly]="appRole?.viewAppRole">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!appRole">
+              <button type="button" class="btn button-color" [disabled]="!appRoleForm.valid"
+                (click)="submitAppRole()">Registrar</button>
+            </div>
+            <div *ngIf="appRole">
+              <button *ngIf="appRole.editAppRole" type="button" class="btn button-color" [disabled]="!appRoleForm.valid"
+                (click)="updateAppRole()">Actualizar</button>
+              <button *ngIf="appRole.viewAppRole" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

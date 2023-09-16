@@ -1,0 +1,98 @@
+<div class="consultation-container" *ngIf="loading">
+    <div class="overlay">
+        <app-spinner></app-spinner>
+    </div>
+</div>
+<div class="consultation-container" style="margin-bottom: 60px;">
+    <div class="container-center">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-9">
+                    <h2 style="color: #A18FD3">Predicción de la enfermedad parovirus</h2>
+                </div>
+            </div>
+            <br>
+            <div class="container d-flex justify-content-center" style="height: auto;">
+                <div class="card" style="background-color: #EDDFFD; width: 800px;">
+                    <div class="card-body">
+                        <form [formGroup]="predicionForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Mascota:</label>
+                                    <select class="form-control custom-select" formControlName="idMascota">
+                                        <option *ngFor="let pet of listPetByClient" [value]="pet.idMascota">{{
+                                            pet.nombreMascota }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Edad en meses:</label>
+                                    <input type="number" class="form-control" min="1" placeholder="Edad en meses"
+                                        formControlName="edadMeses">
+                                </div>
+                            </div>
+                            <br>
+                            <h4 class=" text-center">Síntomas</h4>
+                            <div class="row">
+                                <div class="col-md-3  text-center">
+                                    <label>
+                                        <input type="checkbox" formControlName="diarrea">
+                                        Diarrea con sangre
+                                    </label>
+                                </div>
+                                <div class="col-md-3  text-center">
+                                    <label>
+                                        <input type="checkbox" formControlName="vomitos">
+                                        Vómito
+                                    </label>
+                                </div>
+                                <div class="col-md-3  text-center">
+                                    <label>
+                                        <input type="checkbox" formControlName="fiebre">
+                                        Fiebre
+                                    </label>
+                                </div>
+                                <div class="col-md-3  text-center">
+                                    <label>
+                                        <input type="checkbox" formControlName="perdidaPeso">
+                                        Debilidad
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4  text-center">
+                                    <label>
+                                        <input type="checkbox" formControlName="debilidad">
+                                        Pérdida de peso
+                                    </label>
+                                </div>
+                                <div class="col-md-4  text-center">
+                                    <label>
+                                        <input type="checkbox" formControlName="dolorAbdominal">
+                                        Dolor abdominal
+                                    </label>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <label>
+                                        <input type="checkbox" formControlName="deshidratacion">
+                                        Deshidratación
+                                    </label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6 text-center">
+                                    <button type="button" class="btn button-color" [disabled]="!predicionForm.valid" 
+                                        (click)=checkPrediction()>Predecir</button>
+                                </div>
+                                <div class="col-md-6 text-center">
+                                    <button type="button" class="btn button-color-clean" (click)=cleanFields()>Limpiar
+                                        predicción</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

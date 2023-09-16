@@ -1,0 +1,44 @@
+<div class="disease-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="disease-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!disease">
+        <h4 class="modal-title">Agregar Enfermedad</h4>
+      </div>
+      <div *ngIf="disease">
+        <h4 class="modal-title" *ngIf="disease.viewDisease">Ver Enfermedad</h4>
+        <h4 class="modal-title" *ngIf="disease.editDisease">Editar Enfermedad</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="diseaseForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción Enfermedad:</label>
+              <input type="text" class="form-control" placeholder="Ingresa enfermedad"
+                formControlName="descripcionEnfermedad" [readonly]="disease?.viewDisease">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!disease">
+              <button type="button" class="btn button-color" [disabled]="!diseaseForm.valid"
+                (click)="submitDisease()">Registrar</button>
+            </div>
+            <div *ngIf="disease">
+              <button *ngIf="disease.editDisease" type="button" class="btn button-color" [disabled]="!diseaseForm.valid"
+                (click)="updateDisease()">Actualizar</button>
+              <button *ngIf="disease.viewDisease" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="specialty-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="specialty-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="disease?.deactivateDisease">
+        <h4>Activar enfermedad</h4>
+      </div>
+      <div *ngIf="disease?.activateDisease">
+        <h4>Inactivar enfermedad</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12">
+              <div *ngIf="disease?.deactivateDisease">
+                <p>¿Desea activar la enfermedad?</p>
+              </div>
+              <div *ngIf="disease?.activateDisease">
+                <p>¿Desea inactivar la enfermedad?</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div>
+              <button type="button" class="btn button-color" (click)="activateDeactivateDisease()">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

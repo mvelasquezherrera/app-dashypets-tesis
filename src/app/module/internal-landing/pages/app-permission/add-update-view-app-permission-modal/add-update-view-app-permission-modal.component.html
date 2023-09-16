@@ -1,0 +1,44 @@
+<div class="appPermission-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="appPermission-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!appPermission">
+        <h4 class="modal-title">Agregar Permiso</h4>
+      </div>
+      <div *ngIf="appPermission">
+        <h4 class="modal-title" *ngIf="appPermission.viewAppPermission">Ver Permiso</h4>
+        <h4 class="modal-title" *ngIf="appPermission.editAppPermission">Editar Permiso</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="appPermissionForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Descripción del Permiso:</label>
+              <input type="text" class="form-control" placeholder="Ingresa el permiso"
+                formControlName="descripcionPermisoApp" [readonly]="appPermission?.viewAppPermission">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!appPermission">
+              <button type="button" class="btn button-color" [disabled]="!appPermissionForm.valid"
+                (click)="submitAppPermission()">Registrar</button>
+            </div>
+            <div *ngIf="appPermission">
+              <button *ngIf="appPermission.editAppPermission" type="button" class="btn button-color" [disabled]="!appPermissionForm.valid"
+                (click)="updateAppPermission()">Actualizar</button>
+              <button *ngIf="appPermission.viewAppPermission" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

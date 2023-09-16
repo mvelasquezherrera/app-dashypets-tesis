@@ -1,0 +1,39 @@
+<div class="specialty-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="specialty-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="user?.deactivateUser">
+        <h4>Activar usuario</h4>
+      </div>
+      <div *ngIf="user?.activateUser">
+        <h4>Inactivar usuario</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <div class="row">
+          <div class="row">
+            <div class="col-md-12">
+              <div *ngIf="user?.deactivateUser">
+                <p>¿Desea activar al usuario?</p>
+              </div>
+              <div *ngIf="user?.activateUser">
+                <p>¿Desea inactivar al usuario?</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div>
+              <button type="button" class="btn button-color" (click)="activateDeactivateUser()">Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

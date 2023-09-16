@@ -1,0 +1,52 @@
+<div class="user-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="user-container">
+  <div class="modal-content" style="width: 120%;">
+    <div class="modal-header">
+      <div *ngIf="!user">
+        <h4 class="modal-title">Agregar Usuario</h4>
+      </div>
+      <div *ngIf="user">
+        <h4 class="modal-title" *ngIf="user.viewUser">Ver Usuario</h4>
+        <h4 class="modal-title" *ngIf="user.editUser">Editar Usuario</h4>
+      </div>
+      <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form [formGroup]="userForm">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Usuario:</label>
+              <input type="text" class="form-control" placeholder="Usuario"
+                formControlName="usuario" [readonly]="user?.viewUser">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Clave:</label>
+              <input type="text" class="form-control" placeholder="Clave"
+                formControlName="clave" [readonly]="user?.viewUser">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div *ngIf="!user">
+              <button type="button" class="btn button-color" [disabled]="!userForm.valid"
+                (click)="submitUser()">Registrar</button>
+            </div>
+            <div *ngIf="user">
+              <button *ngIf="user.editUser" type="button" class="btn button-color" [disabled]="!userForm.valid"
+                (click)="updateUser()">Actualizar</button>
+              <button *ngIf="user.viewUser" type="button" class="btn button-color"
+                (click)="closeModal()">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

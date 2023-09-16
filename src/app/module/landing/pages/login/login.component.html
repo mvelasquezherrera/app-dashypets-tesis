@@ -1,0 +1,54 @@
+<div class="login-container" *ngIf="loading">
+  <div class="overlay">
+    <app-spinner></app-spinner>
+  </div>
+</div>
+<div class="login-container">
+  <div style="margin-top: 100px;">
+    <div class="container mt-5">
+      <div style="margin-top: 50px;">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-6">
+            <div class="container mt-5">
+              <div class="row justify-content-center">
+                <div class="col-md-6 custom-border">
+                  <div style="border-color: black; border-radius: 4px;">
+                    <h2 style="color: #8C30F585">Bienvenidos</h2>
+                    <h3 style="color: #8C30F5">Iniciar sesión</h3>
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                      <div class="mb-3">
+                        <label for="username" class="form-label" style="color: #8C30F5;">Usuario</label>
+                        <input type="text" placeholder="Ingresar usuario" class="form-control custom-input" id="usuario"
+                          formControlName="usuario" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="password" class="form-label" style="color: #8C30F5;">Contraseña</label>
+                        <div class="input-group">
+                          <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Ingresar la contraseña"
+                            class="form-control custom-input" id="clave" formControlName="clave" autocomplete="clave" required>
+                          <div class="input-group-append">
+                            <span class="input-group-text" (click)="togglePasswordVisibility()">
+                              <i style="color: #8C30F5"
+                                [ngClass]="{ 'bi bi-eye-fill': showPassword, 'bi bi-eye-slash-fill': !showPassword }"></i>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <button type="submit" class="btn button-color" [disabled]="!loginForm.valid">Iniciar
+                        sesión</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="margin-top-image">
+              <img src="../../../../../assets/images/image_logo.svg" alt="Imagen" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

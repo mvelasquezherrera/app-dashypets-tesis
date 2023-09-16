@@ -1,0 +1,89 @@
+<div class="modal-content" style="width: 120%;">
+  <div class="modal-header">
+    <div *ngIf="!customer">
+      <h4 class="modal-title">Agregar Cliente</h4>
+    </div>
+    <div *ngIf="customer">
+      <h4 class="modal-title" *ngIf="customer.viewCustomer">Ver Cliente</h4>
+      <h4 class="modal-title" *ngIf="customer.editCustomer">Editar Cliente</h4>
+    </div>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <form [formGroup]="customerForm">
+        <div class="row">
+          <div class="col-md-4">
+            <label>DNI:</label>
+            <input type="text" class="form-control" placeholder="DNI" formControlName="dni" required [readonly]="customer?.viewCustomer">
+          </div>
+          <div class="col-md-4">
+            <label>Primer Nombre:</label>
+            <input type="text" class="form-control" placeholder="Primer Nombre" formControlName="nombre1" required [readonly]="customer?.viewCustomer">
+          </div>
+          <div class="col-md-4">
+            <label>Segundo Nombre:</label>
+            <input type="text" class="form-control" placeholder="Segundo Nombre" formControlName="nombre2" [readonly]="customer?.viewCustomer">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Apellido Paterno:</label>
+            <input type="text" class="form-control" placeholder="Apellido Paterno" formControlName="apellidoPaterno" required [readonly]="customer?.viewCustomer">
+          </div>
+          <div class="col-md-4">
+            <label>Apellido Materno:</label>
+            <input type="text" class="form-control" placeholder="Apellido Materno" formControlName="apellidoMaterno" [readonly]="customer?.viewCustomer">
+          </div>
+          <div class="col-md-4">
+            <label>Celular:</label>
+            <input type="text" class="form-control" placeholder="Celular" formControlName="celular" [readonly]="customer?.viewCustomer">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-4">
+            <label>Fecha de Nacimiento:</label>
+            <input type="date" class="form-control" formControlName="fechaNacimiento" [readonly]="customer?.viewCustomer">
+          </div>
+          <div class="col-md-4">
+            <label>Correo Electrónico:</label>
+            <input type="email" class="form-control" placeholder="Correo Electrónico" formControlName="correo" [readonly]="customer?.viewCustomer">
+          </div>
+          <div class="col-md-4">
+            <label>Sexo:</label>
+            <select *ngIf="!customer?.viewCustomer" class="form-control custom-select" formControlName="sexo">
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+            <input *ngIf="customer?.viewCustomer" type="text" class="form-control" placeholder="Género" formControlName="sexo" [readonly]="customer?.viewCustomer">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Dirección:</label>
+            <input type="text" class="form-control" placeholder="Dirección" formControlName="direccion" [readonly]="customer?.viewCustomer">
+          </div>
+          <div class="col-md-6">
+            <label>Usuario:</label>
+            <select *ngIf="!customer?.viewCustomer" class="form-control custom-select" formControlName="usuario">
+              <option *ngFor="let user of listUser" [value]="user.usuario">{{ user.usuario }}</option>
+            </select>
+            <input *ngIf="customer?.viewCustomer" type="text" class="form-control" placeholder="Usuario" value={{customer?.usuario}} [readonly]="customer?.viewCustomer">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div *ngIf="!customer">
+            <button type="button" class="btn button-color" [disabled]="!customerForm.valid" (click)="regiterCustomer()">Registrar</button>
+          </div>
+          <div *ngIf="customer">
+            <button *ngIf="customer.editCustomer" type="button" class="btn button-color" [disabled]="!customerForm.valid" (click)="updateCustomer()">Actualizar</button>
+            <button *ngIf="customer.viewCustomer" type="button" class="btn button-color" (click)="closeModal()">Cerrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
