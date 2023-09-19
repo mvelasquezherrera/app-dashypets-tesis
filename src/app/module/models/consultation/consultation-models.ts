@@ -26,6 +26,7 @@ export class ConsultationModel {
     deactivateConsultation: boolean = false
     sintomasChecklist: SymptomModel[]
     sintomasConcatenado: string
+    prediccionParvovirus: boolean
 }
 
 export class CreateConsultationModelRequest {

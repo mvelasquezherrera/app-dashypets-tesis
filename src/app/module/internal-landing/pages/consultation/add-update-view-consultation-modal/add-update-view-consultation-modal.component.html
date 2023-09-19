@@ -99,6 +99,15 @@
           </div>
         </div>
         <br>
+        <div *ngIf="consultation">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Predicción Parvovirus:</label>
+              <input type="text" class="form-control" placeholder="Predicción" value = {{consultation?.prediccionParvovirus}} formControlName="prediccionParvovirus" [readonly]="true">
+            </div>
+          </div>
+        </div>
+        <br>
         <div class="row">
           <div class="col-md-12">
             <div *ngIf="!consultation?.viewConsultation">

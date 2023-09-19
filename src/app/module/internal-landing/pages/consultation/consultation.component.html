@@ -51,6 +51,7 @@
                 <th>Nomb. Cliente</th>
                 <th>Fecha Consulta</th>
                 <th>Nomb. Mascota</th>
+                <th>Pred. Parvovirus</th>
                 <th>Estado</th>
                 <th>Acciones</th>
               </tr>
@@ -64,6 +65,7 @@
                 <td>{{consultation.nombreCompletoCliente}}</td>
                 <td>{{consultation.fechaConsulta.substring(0, 10) | date: 'dd/MM/YYYY'}}</td>
                 <td>{{consultation.nombreMascota}}</td>
+                <td>{{consultation.prediccionParvovirus}}</td>
                 <td>{{consultation.estadoConsulta === 'A' ? 'ACTIVO' : (consultation.estadoConsulta === 'I' ? 'INACTIVO'
                   : '-')}}</td>
                 <td class="d-flex justify-content-center">
