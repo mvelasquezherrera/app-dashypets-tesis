@@ -12,10 +12,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './module/internal-landing/pages/dashboard/dashboard.component';
+import { TopWidgetsComponent } from './module/internal-landing/pages/dashboard/top-widgets/top-widgets.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -27,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     CommonModule,
     MdbModalModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

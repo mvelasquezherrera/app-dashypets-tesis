@@ -16,6 +16,7 @@ import { UserComponent } from "./pages/user/user.component";
 import { UserRoleAppComponent } from "./pages/user-role-app/user-role-app.component";
 import { SymptomComponent } from "./pages/symptom/symptom.component";
 import { PredictionComponent } from "./pages/prediction/prediction.component";
+import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     component: InternalLayoutComponent,
     children: [
       { path: 'cliente', component: CustomerComponent },
+      { path: 'dashboard', component: DashboardComponent },
       { path: 'enfermedad', component: DiseaseComponent },
       { path: 'especialidad', component: SpecialtyComponent },
       { path: 'razasdeperros', component: PetTypeComponent },

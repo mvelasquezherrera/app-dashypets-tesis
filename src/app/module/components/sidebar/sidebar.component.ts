@@ -10,7 +10,7 @@ import { SidebarService } from '../../services/sidebar/sidebar.service';
 export class SidebarComponent {
 
   menuOptions: MenuOption[];
-  activeOption: string = 'consulta';
+  activeOption: string = 'dashboard';
   fullName: string
   role: string
 
