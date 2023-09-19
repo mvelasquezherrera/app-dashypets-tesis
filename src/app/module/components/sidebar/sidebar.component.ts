@@ -10,11 +10,19 @@ import { SidebarService } from '../../services/sidebar/sidebar.service';
 export class SidebarComponent {
 
   menuOptions: MenuOption[];
-  activeOption: string = 'dashboard';
+  activeOption: string;
   fullName: string
   role: string
 
   constructor() {
+    const role = localStorage.getItem('role');
+    if (role) {
+      this.role = role.toLowerCase();
+      this.activeOption = this.role === 'administrador' ? 'dashboard' : 'consulta';
+    } else {
+      // Si no se encuentra el rol en el almacenamiento local, usa 'dashboard' como valor predeterminado
+      this.activeOption = 'dashboard';
+    }
   }
 
   ngOnInit(): void {

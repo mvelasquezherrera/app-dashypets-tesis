@@ -54,7 +54,13 @@ export class LoginComponent {
                   if (element.estadoPermisoApp === "A") this.activeMenuOptions.push(element)
                 });
                 localStorage.setItem('menu', JSON.stringify(this.activeMenuOptions))
-                this._router.navigateByUrl('/internal/dashboard');
+
+                if (role.toLowerCase() === "administrador") {
+                  this._router.navigateByUrl('/internal/dashboard');
+                } else {
+                  this._router.navigateByUrl('/internal/consulta');
+                }
+
                 this.loading = false;
                 this._toastr.success(message, "Inicio de sesión")
               },
