@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "app-dahypets": "app-dashypets",
+    "default": "app-dashypets"
+  },
+  "targets": {},
+  "etags": {}
+}
