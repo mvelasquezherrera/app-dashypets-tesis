@@ -15,10 +15,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './module/internal-landing/pages/dashboard/dashboard.component';
 import { TopWidgetsComponent } from './module/internal-landing/pages/dashboard/top-widgets/top-widgets.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GraficoRazaRangoEdadComponent } from './module/internal-landing/pages/dashboard/grafico-raza-rango-edad/grafico-raza-rango-edad.component';
+import { ChartModule } from 'angular-highcharts';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent],
+  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent, GraficoRazaRangoEdadComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +33,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     MdbModalModule,
     ToastrModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
