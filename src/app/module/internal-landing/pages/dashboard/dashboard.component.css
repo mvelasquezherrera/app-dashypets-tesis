@@ -1,3 +1,12 @@
+* {
+    overflow-y: auto;
+}
+
+.dashboard-container {
+    position: relative;
+    margin-bottom: auto;
+}
+
 @media only screen and (max-width: 1600px) {
     .top-section {
         width: 1280px;
