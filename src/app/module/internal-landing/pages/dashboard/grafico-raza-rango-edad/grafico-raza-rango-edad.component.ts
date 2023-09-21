@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from '../service/dashboard.service';
 import { DashboardRazaRangoEdadModelResponse } from 'src/app/module/models/dashboard/dashboard-models';
 import { Chart } from 'angular-highcharts';
-import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-grafico-raza-rango-edad',
@@ -22,8 +21,6 @@ export class GraficoRazaRangoEdadComponent implements OnInit {
   listQuintoRango: number[] = []
   
   chart: Chart;
-  //chartOptions: Highcharts.Options = {};
-  @ViewChild('chartContainer') chartContainer!: ElementRef;
 
   constructor(
     private _toastr: ToastrService,
@@ -46,8 +43,6 @@ export class GraficoRazaRangoEdadComponent implements OnInit {
         this.listTercerRango = this.listDataRazaRangoEdad.map(objeto => objeto.tercerRango);
         this.listCuartoRango = this.listDataRazaRangoEdad.map(objeto => objeto.cuartoRango);
         this.listQuintoRango = this.listDataRazaRangoEdad.map(objeto => objeto.quintoRango);
-        console.log("listDataRazaRangoEdad: ", response);
-        console.log("listRazas: ", this.listRazas);
         this.loading = false
         this.actualizarGrafico()
       },

@@ -17,10 +17,11 @@ import { TopWidgetsComponent } from './module/internal-landing/pages/dashboard/t
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GraficoRazaRangoEdadComponent } from './module/internal-landing/pages/dashboard/grafico-raza-rango-edad/grafico-raza-rango-edad.component';
 import { ChartModule } from 'angular-highcharts';
+import { GraficoRazaSexoComponent } from './module/internal-landing/pages/dashboard/grafico-raza-sexo/grafico-raza-sexo.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent, GraficoRazaRangoEdadComponent],
+  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent, GraficoRazaRangoEdadComponent, GraficoRazaSexoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

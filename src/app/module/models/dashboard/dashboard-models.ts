@@ -11,3 +11,25 @@ export class DashboardRazaRangoEdadModelResponse {
     cuartoRango: number
     quintoRango: number
 }
+
+export class DashboardRazaSexoModelResponse {
+    raza: string
+    macho: number
+    hembra: number
+}
+
+export class DataChartPieDrilldownDashboard {
+    constructor(
+        public name: string,
+        public categories: string[],
+        public data: number[]
+    ) {}
+}
+
+export class DataChartPieDashboard {
+    constructor(
+        public y: number,
+        public color: string,
+        public drilldown: DataChartPieDrilldownDashboard
+    ) {}
+}
