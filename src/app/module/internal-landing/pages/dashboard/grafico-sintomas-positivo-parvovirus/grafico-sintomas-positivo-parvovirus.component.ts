@@ -76,37 +76,12 @@ export class GraficoSintomasPositivoParvovirusComponent implements OnInit {
     const colors = Highcharts.getOptions().colors;
     if (colors && colors.length > 0) {
       this.chart = new Chart({
-        chart: {
-          type: 'treemap'
-      },
-      colorAxis: {
-          min: 1, // Valor mínimo en tu rango de colores
-          max: this.calcularCantidadMaximaSintoma(), // Valor máximo en tu rango de colores
-          minColor: '#FFFFFF',
-          maxColor: colors[0]
-      },
-      series: [{
-          type: 'treemap',
-          layoutAlgorithm: 'squarified',
-          clip: false,
-          data: this.setDataChart(),
-          keys: ['name', 'value', 'colorValue'], // Define las claves para cada campo en tus datos
-          states: {
-              hover: {
-                  borderColor: 'black' // Color del borde al hacer hover
-              }
-          }
-      }],
-      title: {
-          text: 'Cantidad de síntomas para casos positivos de parvovirus'
-      },
-      credits: {
-          enabled: false
-      }
-        /*chart: {
-          type: 'treemap'
+          chart: {
+            type: 'treemap'
         },
         colorAxis: {
+            min: 1, // Valor mínimo en tu rango de colores
+            max: this.calcularCantidadMaximaSintoma(), // Valor máximo en tu rango de colores
             minColor: '#FFFFFF',
             maxColor: colors[0]
         },
@@ -114,14 +89,20 @@ export class GraficoSintomasPositivoParvovirusComponent implements OnInit {
             type: 'treemap',
             layoutAlgorithm: 'squarified',
             clip: false,
-            data: this.setDataChart()
+            data: this.setDataChart(),
+            keys: ['name', 'value', 'colorValue'], // Define las claves para cada campo en tus datos
+            states: {
+                hover: {
+                    borderColor: 'black' // Color del borde al hacer hover
+                }
+            }
         }],
         title: {
             text: 'Cantidad de síntomas para casos positivos de parvovirus'
         },
         credits: {
-          enabled: false
-        }*/
+            enabled: false
+        }
       })
     } else {
       // Maneja el caso en el que 'colors' está indefinido o vacío

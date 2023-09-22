@@ -4,6 +4,16 @@ import { DashboardService } from '../service/dashboard.service';
 import { DashboardRazaRangoEdadModelResponse, DashboardRazaSexoModelResponse, DataChartPieDashboard, DataChartPieDrilldownDashboard } from 'src/app/module/models/dashboard/dashboard-models';
 import { Chart } from 'angular-highcharts';
 import * as Highcharts from 'highcharts';
+import HighchartsColor from 'highcharts/modules/coloraxis';
+import HighchartsMore from 'highcharts/highcharts-more';
+import HighchartsExporting from 'highcharts/modules/exporting';
+import HighchartsExportData from 'highcharts/modules/export-data';
+import HighchartsAccessibility from 'highcharts/modules/accessibility';
+HighchartsColor(Highcharts);
+HighchartsMore(Highcharts);
+HighchartsExporting(Highcharts);
+HighchartsExportData(Highcharts);
+HighchartsAccessibility(Highcharts);
 
 @Component({
   selector: 'app-grafico-raza-sexo',
@@ -57,19 +67,25 @@ export class GraficoRazaSexoComponent implements OnInit {
     return (cantidadRaza/this.listRazas.length) * 100
   }
 
-  calcularPorcentajeRazaSexoGrafico(cantidadSexo: number, cantidadRaza: number) {
+  calcularPorcentajeRazaSexoGrafico(cantidadSexo: number) {
     return (cantidadSexo/this.listRazas.length) * 100
   }
 
-  createDataGrafico(colors: any[]) {
+  createDataGrafico() {
+    const colors = Highcharts.getOptions().colors;
     var array: DataChartPieDashboard[] = []
-    for (var i = 0; i < this.listRazas.length; i++) {
-      const drilldown = new DataChartPieDrilldownDashboard(this.listRazas[i], ['Macho','Hembra'],[
-        this.calcularPorcentajeRazaSexoGrafico(this.listMacho[i], this.calcularCantidadRazaGrafico(i)),
-        this.calcularPorcentajeRazaSexoGrafico(this.listHembra[i], this.calcularCantidadRazaGrafico(i)),
-      ])
-      const data = new DataChartPieDashboard(this.calcularPorcentajeRazaGrafico(this.calcularCantidadRazaGrafico(i)),colors[i],drilldown)
-      array.push(data)
+    if (colors && colors.length > 0) {
+      for (var i = 0; i < this.listRazas.length; i++) {
+        const drilldown = new DataChartPieDrilldownDashboard(this.listRazas[i], ['Macho','Hembra'],[
+          this.calcularPorcentajeRazaSexoGrafico(this.listMacho[i]),
+          this.calcularPorcentajeRazaSexoGrafico(this.listHembra[i]),
+        ])
+        const data = new DataChartPieDashboard(this.calcularPorcentajeRazaGrafico(this.calcularCantidadRazaGrafico(i)),colors[i].toString(),drilldown)
+        array.push(data)
+      }
+    } else {
+      // Maneja el caso en el que 'colors' está indefinido o vacío
+      console.error('No se encontraron colores.');
     }
     return array
   }
@@ -89,7 +105,7 @@ export class GraficoRazaSexoComponent implements OnInit {
       "#F6EFE3"  // Amarillo pálido
     ],
       categories = this.listRazas,
-      data = this.createDataGrafico(colors),
+      data = this.createDataGrafico(),
       browserData = [],
       versionsData = [],
       i,
