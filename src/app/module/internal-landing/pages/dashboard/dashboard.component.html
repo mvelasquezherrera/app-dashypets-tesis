@@ -1,14 +1,24 @@
-<div class="top-section dashboard-container">
+<div class="container-fluid">
     <app-top-widgets>
 
     </app-top-widgets>
 </div>
-<div class="middle-section dashboard-container">
-    <div class="widget left">
-        <app-grafico-raza-rango-edad></app-grafico-raza-rango-edad>
+<div class="container-fluid">
+    <div class="row justify-content-around">
+        <div class="widget col-5">
+            <app-grafico-raza-rango-edad></app-grafico-raza-rango-edad>
+        </div>
+        <div class="widget col-5">
+            <app-grafico-raza-sexo></app-grafico-raza-sexo>
+        </div>
     </div>
-    <div class="widget right">
-        <app-grafico-raza-sexo></app-grafico-raza-sexo>
+    <div class="row justify-content-around">
+        <div class="widget col-6">
+            <app-grafico-sintomas-positivo-parvovirus></app-grafico-sintomas-positivo-parvovirus>
+        </div>
+        <div class="widget col-4">
+            
+        </div>
     </div>
 </div>
 <div class="bottom-section dashboard-container">
@@ -16,6 +26,6 @@
         
     </div>
     <div class="widget right">
-
+        
     </div>
 </div>

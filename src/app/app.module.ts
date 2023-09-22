@@ -18,10 +18,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GraficoRazaRangoEdadComponent } from './module/internal-landing/pages/dashboard/grafico-raza-rango-edad/grafico-raza-rango-edad.component';
 import { ChartModule } from 'angular-highcharts';
 import { GraficoRazaSexoComponent } from './module/internal-landing/pages/dashboard/grafico-raza-sexo/grafico-raza-sexo.component';
+import { GraficoSintomasPositivoParvovirusComponent } from './module/internal-landing/pages/dashboard/grafico-sintomas-positivo-parvovirus/grafico-sintomas-positivo-parvovirus.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent, GraficoRazaRangoEdadComponent, GraficoRazaSexoComponent],
+  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent, GraficoRazaRangoEdadComponent, GraficoRazaSexoComponent, GraficoSintomasPositivoParvovirusComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

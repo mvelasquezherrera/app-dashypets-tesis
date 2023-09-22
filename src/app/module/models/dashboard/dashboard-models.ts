@@ -33,3 +33,17 @@ export class DataChartPieDashboard {
         public drilldown: DataChartPieDrilldownDashboard
     ) {}
 }
+
+export class DashboardSintomasPositivoParvovirusModelResponse {
+    idSintoma: number
+    sintoma: string
+    cantidadSintoma: number
+}
+
+export class DataChartTreemapDashboard {
+    constructor(
+        public name: string,
+        public value: number,
+        public colorValue: number
+    ) {}
+}
