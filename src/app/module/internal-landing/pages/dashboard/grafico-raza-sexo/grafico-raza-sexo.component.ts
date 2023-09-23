@@ -143,7 +143,7 @@ export class GraficoRazaSexoComponent implements OnInit {
       },
       title: {
           text: 'Cantidad de género por raza',
-          align: 'left'
+          align: 'center'
       },
       plotOptions: {
           pie: {
