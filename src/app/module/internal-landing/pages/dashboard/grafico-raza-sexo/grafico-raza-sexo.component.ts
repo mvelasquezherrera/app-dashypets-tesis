@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit  } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from '../service/dashboard.service';
-import { DashboardRazaRangoEdadModelResponse, DashboardRazaSexoModelResponse, DataChartPieDashboard, DataChartPieDrilldownDashboard } from 'src/app/module/models/dashboard/dashboard-models';
+import { DashboardRazaSexoModelResponse, DataChartPieDashboard, DataChartPieDrilldownDashboard } from 'src/app/module/models/dashboard/dashboard-models';
 import { Chart } from 'angular-highcharts';
 import * as Highcharts from 'highcharts';
 import HighchartsColor from 'highcharts/modules/coloraxis';

@@ -19,10 +19,11 @@ import { GraficoRazaRangoEdadComponent } from './module/internal-landing/pages/d
 import { ChartModule } from 'angular-highcharts';
 import { GraficoRazaSexoComponent } from './module/internal-landing/pages/dashboard/grafico-raza-sexo/grafico-raza-sexo.component';
 import { GraficoSintomasPositivoParvovirusComponent } from './module/internal-landing/pages/dashboard/grafico-sintomas-positivo-parvovirus/grafico-sintomas-positivo-parvovirus.component';
+import { GraficoPrediccionConfirmadoParvovirusRazaComponent } from './module/internal-landing/pages/dashboard/grafico-prediccion-confirmado-parvovirus-raza/grafico-prediccion-confirmado-parvovirus-raza.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent, GraficoRazaRangoEdadComponent, GraficoRazaSexoComponent, GraficoSintomasPositivoParvovirusComponent],
+  declarations: [AppComponent, DashboardComponent, TopWidgetsComponent, GraficoRazaRangoEdadComponent, GraficoRazaSexoComponent, GraficoSintomasPositivoParvovirusComponent, GraficoPrediccionConfirmadoParvovirusRazaComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

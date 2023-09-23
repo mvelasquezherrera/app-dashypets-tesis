@@ -47,3 +47,21 @@ export class DataChartTreemapDashboard {
         public colorValue: number
     ) {}
 }
+
+export class DashboardPredecidoConfirmadoParvovirusRazaModelResponse {
+    anio: number
+    raza: string
+    cantidadPrediccionPositivoParvovirus: number
+    cantidadPrediccionNegativoParvovirus: number
+    cantidadConfirmadoPositivoParvovirus: number
+    cantidadConfirmadoNegativoParvovirus: number
+}
+
+export class DataChartColumnDashboard {
+    constructor(
+        public type: string,
+        public name: string,
+        public data: number[],
+        public stack: string
+    ) {}
+}

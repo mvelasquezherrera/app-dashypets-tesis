@@ -4,7 +4,8 @@ import { Observable, catchError } from 'rxjs';
 import { DashboardPanelModelResponse, 
   DashboardRazaRangoEdadModelResponse,
   DashboardRazaSexoModelResponse,
-  DashboardSintomasPositivoParvovirusModelResponse
+  DashboardSintomasPositivoParvovirusModelResponse,
+  DashboardPredecidoConfirmadoParvovirusRazaModelResponse
 } from 'src/app/module/models/dashboard/dashboard-models';
 import { BaseService } from 'src/app/module/services/base.service';
 
@@ -18,6 +19,7 @@ export class DashboardService extends BaseService {
   private getUrlRazaRangoEdad = "/dashboard/datosRazasCantidadRangoEdades"
   private getUrlRazaSexo = "/dashboard/datosRazasCantidadSexo"
   private getUrlSintomasPositivoParvovirus = "/dashboard/datosSintomasCasosPositivoParvovirus"
+  private getUrlPredecidoConfirmadoParvovirusRaza = "/dashboard/datosCasosConfirmadosPrediccionParvovirusRaza"
 
   constructor(private _httpClient: HttpClient) {
     super();
@@ -67,6 +69,18 @@ export class DashboardService extends BaseService {
     });
 
     return this._httpClient.get<DashboardSintomasPositivoParvovirusModelResponse[]>(url, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getListPrediccionPositivoParvovirusRaza(): Observable<DashboardPredecidoConfirmadoParvovirusRazaModelResponse[]> {
+    const url = this.getUrlBase() + this.getUrlPredecidoConfirmadoParvovirusRaza;
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this._httpClient.get<DashboardPredecidoConfirmadoParvovirusRazaModelResponse[]>(url, { headers }).pipe(
       catchError(this.handleError)
     );
   }
