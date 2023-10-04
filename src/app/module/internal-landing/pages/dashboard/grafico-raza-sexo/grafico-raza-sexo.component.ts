@@ -79,11 +79,13 @@ export class GraficoRazaSexoComponent implements OnInit {
   }
 
   calcularPorcentajeRazaGrafico(cantidadRaza: number) {
-    return (cantidadRaza/this.calcularTotalMascotas()) * 100
+    const resultado = (cantidadRaza/this.calcularTotalMascotas()) * 100
+    return Math.round(resultado * 100) / 100
   }
 
   calcularPorcentajeRazaSexoGrafico(cantidadSexo: number, cantidadRaza: number) {
-    return (cantidadSexo/cantidadRaza) * this.calcularPorcentajeRazaGrafico(cantidadRaza)
+    const resultado = (cantidadSexo/cantidadRaza) * this.calcularPorcentajeRazaGrafico(cantidadRaza)
+    return Math.round(resultado * 100) / 100
   }
 
   createDataGrafico() {
