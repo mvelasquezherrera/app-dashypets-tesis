@@ -1,0 +1,106 @@
+[debug] [2024-05-14T21:28:16.131Z] ----------------------------------------------------------------------
+[debug] [2024-05-14T21:28:16.132Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-05-14T21:28:16.133Z] CLI Version:   12.5.4
+[debug] [2024-05-14T21:28:16.133Z] Platform:      win32
+[debug] [2024-05-14T21:28:16.133Z] Node Version:  v18.10.0
+[debug] [2024-05-14T21:28:16.134Z] Time:          Tue May 14 2024 16:28:16 GMT-0500 (hora estándar de Perú)
+[debug] [2024-05-14T21:28:16.134Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-14T21:28:16.147Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-05-14T21:28:16.249Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-14T21:28:16.249Z] > authorizing via signed-in user (mvelasquezherrera@gmail.com)
+[debug] [2024-05-14T21:28:16.249Z] [iam] checking project app-dashypets for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-05-14T21:28:16.250Z] > refreshing access token with scopes: []
+[debug] [2024-05-14T21:28:16.251Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-14T21:28:16.251Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:28:16.431Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2024-05-14T21:28:16.431Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:28:16.432Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions [none]
+[debug] [2024-05-14T21:28:16.432Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions x-goog-quota-user=projects/app-dashypets
+[debug] [2024-05-14T21:28:16.432Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-05-14T21:28:16.649Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2024-05-14T21:28:16.649Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2024-05-14T21:28:17.394Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions 401
+[debug] [2024-05-14T21:28:17.394Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2024-05-14T21:28:17.395Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2024-05-14T21:28:17.395Z] > refreshing access token with scopes: []
+[debug] [2024-05-14T21:28:17.396Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-14T21:28:17.396Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:28:17.525Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2024-05-14T21:28:17.525Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:28:17.525Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets [none]
+[debug] [2024-05-14T21:28:17.690Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets 401
+[debug] [2024-05-14T21:28:17.690Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2024-05-14T21:28:17.690Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2024-05-14T21:28:17.848Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at responseToError (C:\Users\PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\PC\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:285:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project app-dashypets. Please make sure the project exists and your account has permission to access it.
+[debug] [2024-05-14T21:45:48.896Z] ----------------------------------------------------------------------
+[debug] [2024-05-14T21:45:48.898Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-05-14T21:45:48.898Z] CLI Version:   13.9.0
+[debug] [2024-05-14T21:45:48.898Z] Platform:      win32
+[debug] [2024-05-14T21:45:48.899Z] Node Version:  v18.10.0
+[debug] [2024-05-14T21:45:48.899Z] Time:          Tue May 14 2024 16:45:48 GMT-0500 (hora estándar de Perú)
+[debug] [2024-05-14T21:45:48.899Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-14T21:45:48.977Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-14T21:45:48.978Z] > authorizing via signed-in user (mvelasquezherrera@gmail.com)
+[debug] [2024-05-14T21:45:48.978Z] [iam] checking project app-dashypets for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-05-14T21:45:48.979Z] > refreshing access token with scopes: []
+[debug] [2024-05-14T21:45:48.980Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-14T21:45:48.980Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:45:49.189Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2024-05-14T21:45:49.189Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:45:49.190Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions [none]
+[debug] [2024-05-14T21:45:49.190Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions x-goog-quota-user=projects/app-dashypets
+[debug] [2024-05-14T21:45:49.190Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-05-14T21:45:50.151Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions 401
+[debug] [2024-05-14T21:45:50.151Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2024-05-14T21:45:50.151Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2024-05-14T21:45:50.152Z] > refreshing access token with scopes: []
+[debug] [2024-05-14T21:45:50.152Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-14T21:45:50.152Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:45:50.288Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2024-05-14T21:45:50.288Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:45:50.288Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets [none]
+[debug] [2024-05-14T21:45:50.451Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets 401
+[debug] [2024-05-14T21:45:50.451Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2024-05-14T21:45:50.451Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier
+[debug] [2024-05-14T21:48:19.940Z] ----------------------------------------------------------------------
+[debug] [2024-05-14T21:48:19.941Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-05-14T21:48:19.942Z] CLI Version:   13.9.0
+[debug] [2024-05-14T21:48:19.942Z] Platform:      win32
+[debug] [2024-05-14T21:48:19.942Z] Node Version:  v18.10.0
+[debug] [2024-05-14T21:48:19.943Z] Time:          Tue May 14 2024 16:48:19 GMT-0500 (hora estándar de Perú)
+[debug] [2024-05-14T21:48:19.943Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-14T21:48:20.004Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-14T21:48:20.005Z] > authorizing via signed-in user (mvelasquezherrera@gmail.com)
+[debug] [2024-05-14T21:48:20.005Z] [iam] checking project app-dashypets for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-05-14T21:48:20.006Z] > refreshing access token with scopes: []
+[debug] [2024-05-14T21:48:20.007Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-14T21:48:20.007Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:48:20.192Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2024-05-14T21:48:20.192Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:48:20.193Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions [none]
+[debug] [2024-05-14T21:48:20.193Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions x-goog-quota-user=projects/app-dashypets
+[debug] [2024-05-14T21:48:20.193Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-05-14T21:48:21.098Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions 401
+[debug] [2024-05-14T21:48:21.098Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/app-dashypets:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2024-05-14T21:48:21.099Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2024-05-14T21:48:21.100Z] > refreshing access token with scopes: []
+[debug] [2024-05-14T21:48:21.100Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-14T21:48:21.100Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:48:21.237Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2024-05-14T21:48:21.237Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-14T21:48:21.238Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets [none]
+[debug] [2024-05-14T21:48:21.365Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets 401
+[debug] [2024-05-14T21:48:21.365Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/app-dashypets {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2024-05-14T21:48:21.365Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[error] 
+[error] Error: Assertion failed: resolving hosting target of a site with no site name or target name. This should have caused an error earlier

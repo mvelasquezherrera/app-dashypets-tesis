@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, AfterViewInit  } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DashboardService } from '../service/dashboard.service';
-import { DashboardPredecidoConfirmadoParvovirusRazaModelResponse, DataChartColumnDashboard } from 'src/app/module/models/dashboard/dashboard-models';
+import { DashboardPredecidoConfirmadoParvovirusRazaModelResponse, DashboardPredecidoConfirmadoParvovirusAnioModelResponse, DataChartColumnDashboard } from 'src/app/module/models/dashboard/dashboard-models';
 import { Chart } from 'angular-highcharts';
 import { SeriesOptionsType } from 'highcharts';
 import * as Highcharts from 'highcharts';
@@ -25,7 +25,9 @@ HighchartsAccessibility(Highcharts);
 export class GraficoPrediccionConfirmadoParvovirusRazaComponent implements OnInit {
 
   loading = false;
+  listAnios: string[] = [] 
   listPrediccionConfirmadoParvovirusRaza: DashboardPredecidoConfirmadoParvovirusRazaModelResponse[] = []
+  listPrediccionConfirmadoParvovirusAnio: DashboardPredecidoConfirmadoParvovirusAnioModelResponse[] = []
   listRazas: string[] = []
   listPredPositiva: number[] = []
   listPredNegativa: number[] = []
@@ -44,7 +46,7 @@ export class GraficoPrediccionConfirmadoParvovirusRazaComponent implements OnIni
   }
 
   ngOnInit(): void {
-      this.getListPrediccionPositivoParvovirusRaza()
+      this.getListPrediccionPositivoParvovirusAnio()
   }
 
   getListPrediccionPositivoParvovirusRaza() {
@@ -52,6 +54,7 @@ export class GraficoPrediccionConfirmadoParvovirusRazaComponent implements OnIni
     this._dashboardService.getListPrediccionPositivoParvovirusRaza().subscribe(
       (response) => {
         this.listPrediccionConfirmadoParvovirusRaza = response;
+        this.listAnios = this.listPrediccionConfirmadoParvovirusRaza.map(objeto => objeto.anio.toString());
         this.listRazas = this.listPrediccionConfirmadoParvovirusRaza.map(objeto => objeto.raza);
         this.listPredPositiva = this.listPrediccionConfirmadoParvovirusRaza.map(objeto => objeto.cantidadPrediccionPositivoParvovirus);
         this.listPredNegativa = this.listPrediccionConfirmadoParvovirusRaza.map(objeto => objeto.cantidadPrediccionNegativoParvovirus);
@@ -63,6 +66,26 @@ export class GraficoPrediccionConfirmadoParvovirusRazaComponent implements OnIni
       (error) => {
         this.loading = false
         this._toastr.error(error.error.error, "Lista de Datos de Casos Predecidos y Confirmados de Parvovirus por Predicción por Raza")
+      }
+    );
+  }
+
+  getListPrediccionPositivoParvovirusAnio() {
+    this.loading = true
+    this._dashboardService.getListPrediccionPositivoParvovirusAnio().subscribe(
+      (response) => {
+        this.listPrediccionConfirmadoParvovirusAnio = response;
+        this.listAnios = this.listPrediccionConfirmadoParvovirusAnio.map(objeto => objeto.anio.toString());
+        this.listPredPositiva = this.listPrediccionConfirmadoParvovirusAnio.map(objeto => objeto.cantidadPrediccionPositivoParvovirus);
+        this.listPredNegativa = this.listPrediccionConfirmadoParvovirusAnio.map(objeto => objeto.cantidadPrediccionNegativoParvovirus);
+        this.listConfirmacionPositiva = this.listPrediccionConfirmadoParvovirusAnio.map(objeto => objeto.cantidadConfirmadoPositivoParvovirus);
+        this.listConfirmacionNegativa = this.listPrediccionConfirmadoParvovirusAnio.map(objeto => objeto.cantidadConfirmadoNegativoParvovirus);
+        this.loading = false
+        this.actualizarGrafico()
+      },
+      (error) => {
+        this.loading = false
+        this._toastr.error(error.error.error, "Lista de Datos de Casos Predecidos y Confirmados de Parvovirus por Predicción por Año")
       }
     );
   }
@@ -109,7 +132,7 @@ export class GraficoPrediccionConfirmadoParvovirusRazaComponent implements OnIni
       },
   
       xAxis: {
-          categories: this.listRazas
+          categories: this.listAnios
       },
   
       yAxis: {

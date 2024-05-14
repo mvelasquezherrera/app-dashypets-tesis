@@ -5,7 +5,8 @@ import { DashboardPanelModelResponse,
   DashboardRazaRangoEdadModelResponse,
   DashboardRazaSexoModelResponse,
   DashboardSintomasPositivoParvovirusModelResponse,
-  DashboardPredecidoConfirmadoParvovirusRazaModelResponse
+  DashboardPredecidoConfirmadoParvovirusRazaModelResponse,
+  DashboardPredecidoConfirmadoParvovirusAnioModelResponse
 } from 'src/app/module/models/dashboard/dashboard-models';
 import { BaseService } from 'src/app/module/services/base.service';
 
@@ -20,6 +21,7 @@ export class DashboardService extends BaseService {
   private getUrlRazaSexo = "/dashboard/datosRazasCantidadSexo"
   private getUrlSintomasPositivoParvovirus = "/dashboard/datosSintomasCasosPositivoParvovirus"
   private getUrlPredecidoConfirmadoParvovirusRaza = "/dashboard/datosCasosConfirmadosPrediccionParvovirusRaza"
+  private getUrlPredecidoConfirmadoParvovirusAnio = "/dashboard/datosCasosConfirmadosPrediccionParvovirusAnio"
 
   constructor(private _httpClient: HttpClient) {
     super();
@@ -85,5 +87,18 @@ export class DashboardService extends BaseService {
     );
   }
 
+  getListPrediccionPositivoParvovirusAnio(): Observable<DashboardPredecidoConfirmadoParvovirusAnioModelResponse[]> {
+    const url = this.getUrlBase() + this.getUrlPredecidoConfirmadoParvovirusAnio;
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this._httpClient.get<DashboardPredecidoConfirmadoParvovirusAnioModelResponse[]>(url, { headers }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
 }
+
 

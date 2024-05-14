@@ -57,6 +57,14 @@ export class DashboardPredecidoConfirmadoParvovirusRazaModelResponse {
     cantidadConfirmadoNegativoParvovirus: number
 }
 
+export class DashboardPredecidoConfirmadoParvovirusAnioModelResponse {
+    anio: number
+    cantidadPrediccionPositivoParvovirus: number
+    cantidadPrediccionNegativoParvovirus: number
+    cantidadConfirmadoPositivoParvovirus: number
+    cantidadConfirmadoNegativoParvovirus: number
+}
+
 export class DataChartColumnDashboard {
     constructor(
         public type: string,
