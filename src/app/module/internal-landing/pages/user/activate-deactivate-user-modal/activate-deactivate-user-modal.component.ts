@@ -29,6 +29,7 @@ export class ActivateDeactivateUserModalComponent implements OnInit {
     if(this.user){
       if(this.user.activateUser){
         this.user.estadoUsuario = "I"
+        console.log("user inactive:", this.user);
         this._userService.patchUser(this.user).subscribe(
           (response) => {
             this.loading = false
@@ -43,6 +44,7 @@ export class ActivateDeactivateUserModalComponent implements OnInit {
         )
       }else{
         this.user.estadoUsuario = "A"
+        console.log("user active:", this.user);
         this._userService.patchUser(this.user).subscribe(
           (response) => {
             this.loading = false
