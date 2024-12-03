@@ -28,9 +28,9 @@
           <div class="col-md-4">
             <label>Mascota:</label>
             <select *ngIf="!consultation?.viewConsultation" class="form-control custom-select" formControlName="idMascota">
-              <option *ngFor="let pet of listPet" [value]="pet.idMascota">{{ pet.nombreMascota }}</option>
+              <option *ngFor="let pet of listPet" [value]="pet.idMascota">{{ pet.nombreMascotaListado }}</option>
             </select>
-            <input *ngIf="consultation?.viewConsultation" type="text" class="form-control" placeholder="Género" value={{consultation?.nombreMascota}} [readonly]="consultation?.viewConsultation">
+            <input *ngIf="consultation?.viewConsultation" type="text" class="form-control" placeholder="Género" value={{consultation?.nombreMascotaListado}} [readonly]="consultation?.viewConsultation">
           </div>
           <div class="col-md-4">
             <label>Enfermedad:</label>
