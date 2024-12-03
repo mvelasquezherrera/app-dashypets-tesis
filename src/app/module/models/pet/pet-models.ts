@@ -8,6 +8,7 @@ export class PetModel {
   descripcionClaseMascota: string
   sexo: string
   nombreMascota: string
+  nombreMascotaListado: string
   color: string
   fechaNacimiento: string
   observaciones: string
